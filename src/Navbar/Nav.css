@@ -1,0 +1,10 @@
+/** @format */
+
+.logo {
+  height: 70px !important;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding: auto;
+}
+
