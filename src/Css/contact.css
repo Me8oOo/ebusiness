@@ -1,0 +1,49 @@
+/** @format */
+
+.containerr {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  color: rgb(209, 205, 199);
+  -webkit-tap-highlight-color: rgba(232, 230, 227, 0);
+  font-family: poppins, sans-serif;
+  --darkreader-inline-bgcolor: #181a1b;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+.input {
+  overflow: visible;
+  font: inherit;
+  width: 100%;
+  border: 0;
+  height: 1.1875em;
+  margin: 0;
+  display: block;
+  padding: 6px 0 7px;
+  min-width: 0;
+  background: none;
+  box-sizing: content-box;
+  animation-name: mui-auto-fill-cancel;
+  color: currentcolor;
+  border-color: initial;
+  background-image: none;
+  background-color: initial;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.form {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  color: rgb(209, 205, 199);
+  margin-right: -15px;
+  margin-left: -15px;
+  padding-top: 3rem !important;
+}

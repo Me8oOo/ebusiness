@@ -1,11 +1,10 @@
 /** @format */
 
-import React, { Component, Link, Route, Switch } from "react";
+import React, { Component } from "react";
 import { axios } from "./axios";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import styled, { css } from "styled-components";
-import "./test.css";
+import "../Css/test.css";
 
 // import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 // import { FaQuoteRight } from "react-icons/fa";
@@ -20,7 +19,7 @@ export class Testo extends Component {
       .get("/api/instructors")
       .then((response) => {
         this.setState({ persons: response.data.response.data });
-        // console.log(response.data.response.data[5]);
+        // console.log(response.data.response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -47,17 +46,16 @@ export class Testo extends Component {
           showDots={false}
         >
           {this.state.persons.map((imp) => (
-            <div className='caro'>
-              <div>
-                <div key={imp.id} className='item'>
-                  <img src={imp.image_url} />
-                  <div>
-                    <h3>{imp.instructor_name}</h3>
-                  </div>
-                  <div>
-                    <h4>{imp.instructor_title}</h4>
-                  </div>
+            <div className='caro' key={imp.id}>
+              <div className='overlay'>
+                <h3 className='name'>{imp.instructor_name}</h3>
+                <div>
+                  <img src={imp.image_url} className='photo rounded' />
+                  <h4 className='title p-5'>{imp.instructor_title}</h4>
                 </div>
+              </div>
+              <div key={imp.id} className='item'>
+                <img src={imp.image_url} className='photo' />
               </div>
             </div>
           ))}

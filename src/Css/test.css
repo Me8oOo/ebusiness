@@ -13,7 +13,7 @@
 }
 
 .carousel .slide img {
-  width: 20% !important;
+  width: 25% !important;
 }
 
 .caro {
@@ -26,10 +26,9 @@
   padding-bottom: 15%;
   padding-left: 5%;
   padding-right: 5%;
-  height: 300px;
 }
 
-.caro h3 {
+.name {
   color: #222;
   font-weight: 100;
   letter-spacing: 0.2px;
@@ -39,16 +38,23 @@
   font-size: 17px;
 }
 
-.caro h4 {
+.h4 {
   text-transform: uppercase;
   margin-top: 0;
   padding-top: 1;
   font-weight: 500;
-  color: #787878;
+  color: rgb(255, 255, 255) !important;
   font-size: 16px;
 }
-
-.control-dots .dot {
+.title {
+  text-transform: uppercase;
+  margin-top: 0;
+  padding: 5;
+  font-weight: 700;
+  color: rgb(0, 0, 0) !important;
+  font-size: 16px;
+}
+h3 .control-dots .dot {
   display: none;
   background: #2802ff60 !important;
   outline: 0;
@@ -63,6 +69,24 @@
   display: inline-block;
   margin: 0;
 }
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: #f1f5f8;
+}
+
+.caro:hover .overlay {
+  opacity: 1;
+}
+
 .carousel {
   box-shadow: none !important;
   outline: 0;
@@ -74,11 +98,6 @@
   position: absolute;
   top: 35% !important;
   left: auto;
-}
-.item {
-  /* padding-bottom: 5px; */
-  /* padding-top: 5px;
-  margin: auto; */
 }
 
 @media only screen and (max-width: 934px) {

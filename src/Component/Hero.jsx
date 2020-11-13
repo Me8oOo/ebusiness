@@ -1,7 +1,6 @@
 /** @format */
 
 import React, { Component } from "react";
-import "../Component/styles.css";
 import styled, { css } from "styled-components";
 
 const Content = styled.div`
@@ -14,20 +13,16 @@ const Content = styled.div`
   background-repeat: no-repeat;
 `;
 const Wrapper = styled.section`
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.794);
-    color: whitesmoke !important ;
-  }
   padding: 4em;
-  background-color: rgba(188, 204, 238, 0.787);
+  background-color: rgba(0, 0, 0, 0.794);
   opacity: 100%;
-  color: black !important ;
+  color: whitesmoke !important ;
 `;
 const Button = styled.button`
   &:hover {
-    background: rosybrown;
     border-radius: 3px;
-    border: 2px solid #3a7aa0;
+    border: 2px solid blueviolet;
+    background-color: rgba(0, 0, 0, 0);
   }
   background: blueviolet;
   border: 2px solid blueviolet;

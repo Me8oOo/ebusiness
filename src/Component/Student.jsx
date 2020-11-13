@@ -1,90 +1,63 @@
 /** @format */
 
-import React, { useState, useEffect } from "react";
-import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
-import { FaQuoteRight } from "react-icons/fa";
-import Student from "./data";
-import "./Student.css";
-function Studentt() {
-  const [people, setPeople] = useState(Student);
-  const [index, setIndex] = React.useState(0);
+import React, { Component, useState, useRef } from "react";
+import { axios } from "./axios";
 
-  const nextSlide = () => {
-    setIndex((oldIndex) => {
-      let index = oldIndex + 1;
-      if (index > people.length - 1) {
-        index = 0;
-      }
-      return index;
-    });
+import styled, { css } from "styled-components";
+import "../Css/Student.css";
+import Carousel from "nuka-carousel";
+
+// import { Button, Overlay, FormControl, ControlLabel } from "react-bootstrap";
+
+class Student extends React.Component {
+  state = {
+    students: [],
   };
 
-  const prevSlide = () => {
-    setIndex((oldIndex) => {
-      let index = oldIndex - 1;
-      if (index < 0) {
-        index = people.length - 1;
-      }
-      return index;
-    });
-  };
-
-  useEffect(() => {
-    let slider = setInterval(() => {
-      setIndex((oldIndex) => {
-        let index = oldIndex + 1;
-        if (index > people.length - 1) {
-          index = 0;
-        }
-        return index;
+  async componentDidMount() {
+    await axios
+      .get("/api/testamonials")
+      .then((response) => {
+        this.setState({ students: response.data.response.data });
+        // console.log(response.data.response.data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
-    }, 5000);
-    return () => {
-      clearInterval(slider);
-    };
-  }, [index]);
+  }
 
-  return (
-    <section className='section'>
-      <div className='title'>
-        <h2>
-          <span>/</span>reviews
-        </h2>
-      </div>
+  getusers() {
+    this.componentDidMount();
+  }
+  render() {
+    return (
       <div className='section-center'>
-        {people.map((person, personIndex) => {
-          const { id, image, name, title, quote } = person;
-
-          let position = "nextSlide";
-          if (personIndex === index) {
-            position = "activeSlide";
-          }
-          if (
-            personIndex === index - 1 ||
-            (index === 0 && personIndex === people.length - 1)
-          ) {
-            position = "lastSlide";
-          }
-
-          return (
-            <article className={position} key={id}>
-              <img src={image} alt={name} className='person-img' />
-              <h4>{name}</h4>
-              <p className='title'>{title}</p>
-              <p className='text'>{quote}</p>
-              <FaQuoteRight className='icon' />
-            </article>
-          );
-        })}
-        <button className='prev' onClick={prevSlide}>
-          <FiChevronLeft />
-        </button>
-        <button className='next' onClick={nextSlide}>
-          <FiChevronRight />
-        </button>
+        <Carousel
+          slideIndex={this.state.slideIndex}
+          afterSlide={(slideIndex) => this.setState({ slideIndex })}
+        >
+          {this.state.students.map((test) => (
+            <div className='caro' key={test.id}>
+              <div>
+                <div className='container'>
+                  <img src={test.image_url} className='pics' />
+                  <div>
+                    <h3 className='name'>{test.student_name}</h3>
+                  </div>
+                  <div className='location'>
+                    <h3>{test.student_location}</h3>
+                  </div>
+                  <div>
+                    <h4 className='text'>{test.student_testamonial}</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </Carousel>
       </div>
-    </section>
-  );
+    );
+  }
 }
 
-export default Studentt;
+export default Student;
