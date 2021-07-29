@@ -75,8 +75,6 @@ export class HeroContent extends Component {
                     this.props.button_text
                   )}
                 />
-
-                <div></div>
               </div>
             </Wrapper>
           </div>
